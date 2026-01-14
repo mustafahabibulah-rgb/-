@@ -31,6 +31,11 @@ async def menu_handler(message: types.Message):
     )
 
 
+@dp.message(lambda m: "id" in m.text.lower() or "/id" in m.text.lower())
+async def get_chat_id(message: types.Message):
+    await message.answer(f"Ваш ID: {message.chat.id}")
+
+
 @dp.message()
 async def hello(message: types.Message):
     await message.send_copy(message.from_user.id)
